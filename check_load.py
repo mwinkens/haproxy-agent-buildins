@@ -1,9 +1,12 @@
 import psutil
 
 def check_load():
+    """
+    Get loads with psutil
+    """
     loads = list(psutil.getloadavg())
     num_logical_cpu = psutil.cpu_count(logical=True)
-    for i in range(len(loads)):
+    for i, _ in enumerate(loads):
         loads[i] /= num_logical_cpu
     return loads
 
